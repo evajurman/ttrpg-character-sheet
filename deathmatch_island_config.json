@@ -1,0 +1,296 @@
+{
+  "version": "1.0",
+  "name": "Deathmatch Island",
+  "layout": {
+    "columns": 12,
+    "rows": "auto"
+  },
+  "theme": {
+    "dark": {
+      "bg": "#0d0d0d",
+      "bg2": "#141414",
+      "bg3": "#1a1a1a",
+      "card": "#1a1a1a",
+      "inputBg": "#0a0a0a",
+      "text": "#e8e8e8",
+      "text2": "#a0a0a0",
+      "text3": "#555555",
+      "accent": "#e63e2f",
+      "accent2": "#b02a1e",
+      "border": "#2a2a2a",
+      "border2": "#3a3a3a"
+    },
+    "light": {
+      "bg": "#f5f0ee",
+      "bg2": "#ece5e2",
+      "bg3": "#e0d8d4",
+      "card": "#ffffff",
+      "inputBg": "#ffffff",
+      "text": "#1a1010",
+      "text2": "#5a4040",
+      "text3": "#9a8080",
+      "accent": "#c0281a",
+      "accent2": "#8a1c10",
+      "border": "#d0c8c4",
+      "border2": "#b8b0ac"
+    }
+  },
+  "fields": [
+
+    { "id": "sec_identity", "type": "section", "label": "Competitor Registration", "subtitle": "WINNERS PLAY TO WIN™",
+      "position": { "col": 1, "row": 1, "colSpan": 12 } },
+
+    { "id": "char_name", "type": "text", "label": "Name / Pronouns",
+      "placeholder": "Full name and pronouns",
+      "position": { "col": 1, "row": 2, "colSpan": 4 } },
+
+    { "id": "nickname", "type": "text", "label": "Nickname (after 400,000 followers)",
+      "placeholder": "Unlocked at 400k",
+      "position": { "col": 5, "row": 2, "colSpan": 4 } },
+
+    { "id": "competitor_id", "type": "text", "label": "Competitor Number",
+      "placeholder": "Roll d100 for unique ID",
+      "position": { "col": 9, "row": 2, "colSpan": 2 } },
+
+    { "id": "occupation", "type": "text", "label": "Occupation",
+      "placeholder": "Roll 1d4 → table, then 2d8",
+      "position": { "col": 11, "row": 2, "colSpan": 2 } },
+
+    { "id": "initial_motivation", "type": "text", "label": "Initial Motivation",
+      "placeholder": "e.g. Victory, Sabotage, Money…",
+      "position": { "col": 1, "row": 3, "colSpan": 4 } },
+
+    { "id": "favoured_capability", "type": "text", "label": "Favoured Capability (d8)",
+      "placeholder": "From Occupation — starts at d8",
+      "position": { "col": 5, "row": 3, "colSpan": 4 } },
+
+    { "id": "distinguishing_features", "type": "text", "label": "Distinguishing Features",
+      "placeholder": "Eyes, Hair, Build, Detail…",
+      "multiline": true,
+      "position": { "col": 9, "row": 3, "colSpan": 4, "rowSpan": 2 } },
+
+    { "id": "uniform", "type": "text", "label": "Uniform / Season Look",
+      "placeholder": "Decided as a group",
+      "position": { "col": 1, "row": 4, "colSpan": 4 } },
+
+    { "id": "welcome_letter", "type": "text", "label": "Welcome Letter / Notes",
+      "placeholder": "From the Production Player",
+      "multiline": true,
+      "position": { "col": 5, "row": 4, "colSpan": 4, "rowSpan": 2 } },
+
+    { "id": "eval_disruption", "type": "text", "label": "EVAL: Disruption Risk",
+      "placeholder": "CONFIDENTIAL — note on reverse",
+      "position": { "col": 1, "row": 5, "colSpan": 4 } },
+
+    { "id": "notes", "type": "text", "label": "Notes",
+      "placeholder": "Any other notes…",
+      "multiline": true,
+      "position": { "col": 9, "row": 5, "colSpan": 4 } },
+
+    { "id": "sec_capabilities", "type": "section", "label": "Capabilities",
+      "subtitle": "Outbrave · Outsmart · Outtalk · Outlast",
+      "position": { "col": 1, "row": 6, "colSpan": 12 } },
+
+    { "id": "cap_deathmatch", "type": "text", "label": "Deathmatch Die",
+      "placeholder": "d6 (or d8 if favoured)",
+      "position": { "col": 1, "row": 7, "colSpan": 3 } },
+
+    { "id": "cap_social", "type": "text", "label": "Social Game Die",
+      "placeholder": "d6 (or d8 if favoured)",
+      "position": { "col": 4, "row": 7, "colSpan": 3 } },
+
+    { "id": "cap_challenge", "type": "text", "label": "Challenge Beast Die",
+      "placeholder": "d6 (or d8 if favoured)",
+      "position": { "col": 7, "row": 7, "colSpan": 3 } },
+
+    { "id": "cap_snake", "type": "text", "label": "Snake Mode Die",
+      "placeholder": "d6 (or d8 if favoured)",
+      "position": { "col": 10, "row": 7, "colSpan": 3 } },
+
+    { "id": "sec_name_die", "type": "section", "label": "Name Die & Followers",
+      "subtitle": "Name die starts at d6 — advances with followers",
+      "position": { "col": 1, "row": 8, "colSpan": 12 } },
+
+    { "id": "name_die", "type": "text", "label": "Name Die",
+      "placeholder": "d6",
+      "position": { "col": 1, "row": 9, "colSpan": 2 } },
+
+    { "id": "new_followers", "type": "number", "label": "New Followers (×10,000)",
+      "default": "0",
+      "position": { "col": 3, "row": 9, "colSpan": 3 } },
+
+    { "id": "total_followers", "type": "number", "label": "Total Followers",
+      "default": "0",
+      "position": { "col": 6, "row": 9, "colSpan": 3 } },
+
+    { "id": "follower_milestone", "type": "text", "label": "Name Die Milestone",
+      "placeholder": "400k→d8 · 800k→d10 · 1.6m→d12",
+      "position": { "col": 9, "row": 9, "colSpan": 4 } },
+
+    { "id": "sec_vitals", "type": "section", "label": "Vitals",
+      "subtitle": "Fatigue · Injuries · Trust",
+      "position": { "col": 1, "row": 10, "colSpan": 12 } },
+
+    { "id": "fatigue", "type": "number", "label": "Fatigue Marked",
+      "default": "0",
+      "position": { "col": 1, "row": 11, "colSpan": 3 } },
+
+    { "id": "injuries", "type": "number", "label": "Injuries Marked",
+      "default": "0",
+      "position": { "col": 4, "row": 11, "colSpan": 3 } },
+
+    { "id": "jury_votes", "type": "number", "label": "Jury Votes",
+      "default": "0",
+      "position": { "col": 7, "row": 11, "colSpan": 3 } },
+
+    { "id": "advantages", "type": "text", "label": "Advantages / Flashback Memories",
+      "placeholder": "Bonus dice from Trust Building flashbacks",
+      "multiline": true,
+      "position": { "col": 10, "row": 11, "colSpan": 3, "rowSpan": 2 } },
+
+    { "id": "trust_list", "type": "text", "label": "Trust (with each competitor)",
+      "placeholder": "Name: 2 · Name: 2 · …",
+      "multiline": true,
+      "position": { "col": 1, "row": 12, "colSpan": 9 } },
+
+    { "id": "sec_weapons", "type": "section", "label": "Acquisitions: Weapons",
+      "subtitle": "Mark a diamond per use · Tier = number of d4s rolled",
+      "position": { "col": 1, "row": 13, "colSpan": 12 } },
+
+    { "id": "wpn_grenade", "type": "number", "label": "M67 Frag Grenade (Tier 1)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 1, "row": 14, "colSpan": 2 } },
+
+    { "id": "wpn_melee", "type": "number", "label": "Close Combat Melee (Tier 1)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 3, "row": 14, "colSpan": 2 } },
+
+    { "id": "wpn_crossbow", "type": "number", "label": "Horton Hunter Crossbow (Tier 2)",
+      "default": "0", "dice": "2d4",
+      "position": { "col": 5, "row": 14, "colSpan": 2 } },
+
+    { "id": "wpn_pistol", "type": "number", "label": "Walther P99 Pistol (Tier 1)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 7, "row": 14, "colSpan": 2 } },
+
+    { "id": "wpn_rifle", "type": "number", "label": "FAMAS Assault Rifle (Tier 3)",
+      "default": "0", "dice": "3d4",
+      "position": { "col": 9, "row": 14, "colSpan": 2 } },
+
+    { "id": "wpn_shotgun", "type": "number", "label": "Remington M870 Shotgun (Tier 2)",
+      "default": "0", "dice": "2d4",
+      "position": { "col": 11, "row": 14, "colSpan": 2 } },
+
+    { "id": "wpn_sniper", "type": "number", "label": "PSG-1 Sniper Rifle (Tier 3)",
+      "default": "0", "dice": "3d4",
+      "position": { "col": 1, "row": 15, "colSpan": 2 } },
+
+    { "id": "wpn_rocket", "type": "number", "label": "M136 AT4 Rocket Launcher (Tier 3)",
+      "default": "0", "dice": "3d4",
+      "position": { "col": 3, "row": 15, "colSpan": 2 } },
+
+    { "id": "sec_equipment", "type": "section", "label": "Acquisitions: Equipment",
+      "subtitle": "Mark uses remaining",
+      "position": { "col": 5, "row": 15, "colSpan": 8 } },
+
+    { "id": "eq_climbing", "type": "number", "label": "Climbing Gear (Tier 1)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 5, "row": 16, "colSpan": 2 } },
+
+    { "id": "eq_survival", "type": "number", "label": "Survival Gear (Tier 1)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 7, "row": 16, "colSpan": 2 } },
+
+    { "id": "eq_recon", "type": "number", "label": "Recon Gear (Tier 2)",
+      "default": "0", "dice": "2d4",
+      "position": { "col": 9, "row": 16, "colSpan": 2 } },
+
+    { "id": "eq_luxuries", "type": "number", "label": "Small Luxuries (Tier 2)",
+      "default": "0", "dice": "2d4",
+      "position": { "col": 11, "row": 16, "colSpan": 2 } },
+
+    { "id": "sec_redacted", "type": "section", "label": "Acquisitions: ████████",
+      "subtitle": "REDACTED — restricted contest use only",
+      "position": { "col": 1, "row": 16, "colSpan": 4 } },
+
+    { "id": "redacted_1", "type": "number", "label": "████████ (Tier ?)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 1, "row": 17, "colSpan": 2 } },
+
+    { "id": "redacted_2", "type": "number", "label": "████████ (Tier ?)",
+      "default": "0", "dice": "1d4",
+      "position": { "col": 3, "row": 17, "colSpan": 2 } },
+
+    { "id": "sec_actions", "type": "section", "label": "Contest Actions",
+      "subtitle": "Computed values — roll dice pool, keep two highest + d4s",
+      "position": { "col": 5, "row": 17, "colSpan": 8 } },
+
+    { "id": "action_outbrave", "type": "action", "label": "Outbrave Pool (Occ + Name + Cap)",
+      "equation": "0",
+      "dice": "d6",
+      "position": { "col": 5, "row": 18, "colSpan": 2 } },
+
+    { "id": "action_outsmart", "type": "action", "label": "Outsmart Pool",
+      "equation": "0",
+      "dice": "d6",
+      "position": { "col": 7, "row": 18, "colSpan": 2 } },
+
+    { "id": "action_outtalk", "type": "action", "label": "Outtalk Pool",
+      "equation": "0",
+      "dice": "d6",
+      "position": { "col": 9, "row": 18, "colSpan": 2 } },
+
+    { "id": "action_outlast", "type": "action", "label": "Outlast Pool",
+      "equation": "0",
+      "dice": "d6",
+      "position": { "col": 11, "row": 18, "colSpan": 2 } },
+
+    { "id": "sec_advancement", "type": "section", "label": "Advancement",
+      "subtitle": "Mark Injury → choose an advance",
+      "position": { "col": 1, "row": 18, "colSpan": 4 } },
+
+    { "id": "adv_cap_die", "type": "text", "label": "Advance: Capability Die +1 size",
+      "placeholder": "e.g. d6 → d8",
+      "position": { "col": 1, "row": 19, "colSpan": 2 } },
+
+    { "id": "adv_occupation", "type": "text", "label": "Advance: Occupation Die → d8",
+      "placeholder": "Occupation die becomes d8",
+      "position": { "col": 3, "row": 19, "colSpan": 2 } },
+
+    { "id": "adv_occ2", "type": "text", "label": "Special: Add 2nd Occupation",
+      "placeholder": "Advance Occupation to d8 first",
+      "position": { "col": 5, "row": 19, "colSpan": 2 } },
+
+    { "id": "adv_heal1", "type": "text", "label": "Special Adv: Heal 1 Injury",
+      "placeholder": "Immediately heal one injury",
+      "position": { "col": 7, "row": 19, "colSpan": 2 } },
+
+    { "id": "adv_heal2", "type": "text", "label": "Special Adv: Heal 1 Injury (alt)",
+      "placeholder": "Immediately heal one injury",
+      "position": { "col": 9, "row": 19, "colSpan": 2 } },
+
+    { "id": "sec_support", "type": "section", "label": "Support & Trust Actions",
+      "subtitle": "Support → give your Cap die · spend Trust to Bolster / Block / Follow",
+      "position": { "col": 11, "row": 19, "colSpan": 2 } },
+
+    { "id": "sec_theory", "type": "section", "label": "Between Islands",
+      "subtitle": "Debrief · Theory · Jury · Recuperate · Trust Building · Advance",
+      "position": { "col": 1, "row": 20, "colSpan": 12 } },
+
+    { "id": "island_debrief", "type": "text", "label": "Island Debrief Notes",
+      "placeholder": "Fates of all competitors this island",
+      "multiline": true,
+      "position": { "col": 1, "row": 21, "colSpan": 4, "rowSpan": 2 } },
+
+    { "id": "theory", "type": "text", "label": "Theory Crafting",
+      "placeholder": "Political Project / Entertainment / Big Experiment / Weird",
+      "multiline": true,
+      "position": { "col": 5, "row": 21, "colSpan": 4, "rowSpan": 2 } },
+
+    { "id": "trust_building_q", "type": "text", "label": "Trust Building Flashback",
+      "placeholder": "Q asked + flashback answer — note as Advantage",
+      "multiline": true,
+      "position": { "col": 9, "row": 21, "colSpan": 4, "rowSpan": 2 } }
+
+  ]
+}

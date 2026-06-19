@@ -822,7 +822,7 @@
                   />
                 </div>
                 <div class="form-row-2">
-                  <div class="form-row">
+                  <div class="form-row font-picker-container">
                     <label>Font</label>
                     <div class="picker-container">
                       <input
@@ -1216,6 +1216,7 @@
           fontInput.value = item.getAttribute("data-font");
           // Apply the selected font directly to the input field text
           fontInput.style.fontFamily = item.style.fontFamily;
+          metaChanged();
           fontDropdown.classList.add("hidden");
         });
       });

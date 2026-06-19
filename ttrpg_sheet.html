@@ -210,7 +210,7 @@
       .field-label {
         font-size: calc(var(--font-size) * 0.8);
         font-weight: 600;
-        color: var(--text3);
+        color: var(--field-label);
         letter-spacing: 0.5px;
       }
       .field-value-row {
@@ -223,7 +223,7 @@
         background: transparent;
         border: none;
         border-bottom: 1px solid var(--border2);
-        color: var(--accent);
+        color: var(--field-input);
         font: var(--font);
         font-size: var(--font-size);
         font-weight: 600;
@@ -285,7 +285,7 @@
         grid-template-columns: 1fr 1px;
       }
       .character-layout.show-log {
-        grid-template-columns: 1fr 340px;
+        grid-template-columns: 5fr 1fr;
       }
 
       /* EDITOR */
@@ -340,7 +340,7 @@
       .cv-cell .cv-label {
         font-size: calc(var(--font-size) * 0.7);
         font-weight: 700;
-        color: var(--text3);
+        color: var(--field-label);
         letter-spacing: 0.5px;
       }
       .cv-cell .cv-type {
@@ -991,6 +991,50 @@
                 </div>
                 <div class="form-row-2">
                   <div class="form-row">
+                    <label>Field Label (Dark)</label
+                    ><input
+                      class="form-input"
+                      id="cfg-label-dark"
+                      type="color"
+                      value="#e0e0e0"
+                      oninput="metaChanged()"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <label>Field Label (Light)</label
+                    ><input
+                      class="form-input"
+                      id="cfg-label-light"
+                      type="color"
+                      value="#606070"
+                      oninput="metaChanged()"
+                    />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-row">
+                    <label>Field Input (Dark)</label
+                    ><input
+                      class="form-input"
+                      id="cfg-input-dark"
+                      type="color"
+                      value="#e0e0e0"
+                      oninput="metaChanged()"
+                    />
+                  </div>
+                  <div class="form-row">
+                    <label>Field Input (Light)</label
+                    ><input
+                      class="form-input"
+                      id="cfg-input-light"
+                      type="color"
+                      value="#1a1a2e"
+                      oninput="metaChanged()"
+                    />
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-row">
                     <label>Background (Dark)</label
                     ><input
                       class="form-input"
@@ -1280,6 +1324,8 @@
           inputBg: "--input-bg",
           font: "--font",
           fontSize: "--font-size",
+          fieldLabel: "--field-label",
+          fieldInput: "--field-input",
         };
         for (const [k, v] of Object.entries(map)) {
           if (colors[k]) {
@@ -1395,18 +1441,16 @@
           row.appendChild(inp);
           // DICE DICE DICE ^^^
 
-          if (data[field.id]) {
-            const btn = document.createElement("button");
-            btn.className = "dice-btn";
-            btn.textContent = "🎲";
-            btn.onclick = () =>
-              rollDice(
-                data[field.id] || "1",
-                field.label,
-                computeAction(field, data),
-              );
-            row.appendChild(btn);
-          }
+          const btn = document.createElement("button");
+          btn.className = "dice-btn";
+          btn.textContent = "🎲";
+          btn.onclick = () =>
+            rollDice(
+              data[field.id] || "1",
+              field.label,
+              computeAction(field, data),
+            );
+          row.appendChild(btn);
         } else {
           const inp = document.createElement(
             field.multiline ? "textarea" : "input",
@@ -1437,11 +1481,16 @@
             btn.className = "dice-btn";
             btn.textContent = "🎲 " + field.dice;
             const fid = field.id;
+            const defaultValue = currentConfig.fields.find(
+              ({ id }) => id === fid,
+            )?.default;
+            const statModWithDefault = characterData[fid] || defaultValue;
+            console.log({ statModWithDefault });
             btn.onclick = () =>
               rollDice(
                 field.dice,
                 field.label,
-                parseInt(characterData[fid] || 0),
+                parseInt(statModWithDefault || 0),
               );
             row.appendChild(btn);
           }
@@ -1450,7 +1499,13 @@
         return wrap;
       }
       function computeAction(field, data) {
-        data = data || characterData;
+        const defaultFields = currentConfig.fields.reduce(
+          (fields, fieldItem) => {
+            return { ...fields, [fieldItem.id]: fieldItem.default };
+          },
+          {},
+        );
+        data = { ...defaultFields, ...characterData, ...data };
         if (!field.equation) return "—";
         try {
           let eq = field.equation;
@@ -1600,6 +1655,14 @@
           currentConfig.theme?.dark?.card || "#1e1e38";
         document.getElementById("cfg-card-light").value =
           currentConfig.theme?.light?.card || "#ffffff";
+        document.getElementById("cfg-label-light").value =
+          currentConfig.theme?.light?.fieldLabel || "#606070";
+        document.getElementById("cfg-label-dark").value =
+          currentConfig.theme?.dark?.fieldLabel || "#e0e0e0";
+        document.getElementById("cfg-input-light").value =
+          currentConfig.theme?.light?.fieldInput || "#1a1a2e";
+        document.getElementById("cfg-input-dark").value =
+          currentConfig.theme?.dark?.fieldInput || "#e0e0e0";
       }
 
       // ── SIDEBAR TABS ──
@@ -1677,11 +1740,15 @@
             accent: document.getElementById("cfg-accent-dark").value,
             bg: document.getElementById("cfg-bg-dark").value,
             card: document.getElementById("cfg-card-dark").value,
+            fieldLabel: document.getElementById("cfg-label-dark").value,
+            fieldInput: document.getElementById("cfg-input-dark").value,
           },
           light: {
             accent: document.getElementById("cfg-accent-light").value,
             bg: document.getElementById("cfg-bg-light").value,
             card: document.getElementById("cfg-card-light").value,
+            fieldLabel: document.getElementById("cfg-label-light").value,
+            fieldInput: document.getElementById("cfg-input-light").value,
           },
         };
         settingsUndoStack.push({ ...currentConfig });

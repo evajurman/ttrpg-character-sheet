@@ -48,7 +48,7 @@
         padding: 0;
       }
       body {
-        background: var(--bg);
+        background: var(--bg, #1a1a2e);
         color: var(--text);
         font-family: var(--font);
         font-size: var(--font-size);
@@ -1274,7 +1274,6 @@
         document.getElementById("theme-btn").textContent =
           t === "dark" ? "☀️ Light" : "🌙 Dark";
         localStorage.setItem(LS_THEME, t);
-        console.log(currentConfig?.theme);
         if (currentConfig?.theme) {
           applyConfigTheme(
             currentConfig.theme,
@@ -1485,7 +1484,6 @@
               ({ id }) => id === fid,
             )?.default;
             const statModWithDefault = characterData[fid] || defaultValue;
-            console.log({ statModWithDefault });
             btn.onclick = () =>
               rollDice(
                 field.dice,
